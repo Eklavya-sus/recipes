@@ -27,8 +27,12 @@ fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast")
       // create h1 element <h1>
 
       // ELEMENT UPDATION
+      // update class of li
+      // liElement.classList.add('img-with-text')
+
       // update img element with src <img src="">
       // img.src = data.meals[i].strMealThumb
+      // update img class
 
       // update h1 with title <h1>text<h1>
       // h1.innerText = data.meals[i].strMeal
