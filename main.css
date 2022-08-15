@@ -1,0 +1,24 @@
+.box{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  padding: 24px;
+  gap: 24px;
+}
+
+.img-with-text:hover{
+   /* background: rgba(0, 0, 0, 0.2);*/
+   box-shadow: 0 0 7px rgba(0, 0, 0, 0.50);
+    
+}
+.img-with-text {
+    text-align: justify;
+    width: 254;
+  text-align: center;
+  
+}
+
+.img-with-text img {
+    display: block;
+    margin:  0 auto;
+}
+
