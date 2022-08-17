@@ -8,38 +8,40 @@ fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast")
     console.log("document", document);
     const ulElement = document.getElementById("list");
     console.log(ulElement);
-
-    const liElement = document.createElement("li");
-    liElement.innerText = "hi";
-
-    const liElement2 = document.createElement("li");
-    liElement2.innerText = "World";
-
-    ulElement.appendChild(liElement);
-    ulElement.appendChild(liElement2);
-
     for (let i = 0; i < data.meals.length; i++) {
-      console.log(data.meals[i]);
+      
 
       // ELEMENT CREATION
+    
       // create Li element <li>
-      // create img element <img>
-      // create h1 element <h1>
+      const liElement = document.createElement("li");
 
+      // create img element <img>
+      const imgElement = document.createElement("img");
+      
+      // create h1 element <h1>
+      const h1Element = document.createElement("h3");
+      
+      
       // ELEMENT UPDATION
       // update class of li
-      // liElement.classList.add('img-with-text')
-
+      liElement.classList.add('img-with-text');
+      
       // update img element with src <img src="">
-      // img.src = data.meals[i].strMealThumb
+      
+      imgElement.src = data.meals[i].strMealThumb;
       // update img class
-
+      imgElement.classList.add('pic');
       // update h1 with title <h1>text<h1>
-      // h1.innerText = data.meals[i].strMeal
-
+      h1Element.innerText = data.meals[i].strMeal;
+      
       // ELEMENT APPEND IN DOM
       // img will be child of li
+      liElement.appendChild(imgElement);
       // h1 will be child of li
+      liElement.appendChild(h1Element);
       // li will be child of ul
+      ulElement.appendChild(liElement);
+      
     }
   });
