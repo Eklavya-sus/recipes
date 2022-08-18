@@ -45,3 +45,21 @@ fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast")
       
     }
   });
+  fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+  .then((res) => {
+    const catgry = res.json();
+    return catgry;
+  })
+  
+  .then((catgry) => {
+    const xlElement = document.getElementById("cat");
+    for (let i = 0; i < catgry.meals.length; i++){
+      
+      const txtElement = document.createElement("button");
+      txtElement.classList.toggle("show");
+      txtElement.innerText = catgry.meals[i].strCategory;
+      console.log(txtElement);
+      xlElement.appendChild(txtElement);  
+    }
+  
+  });
