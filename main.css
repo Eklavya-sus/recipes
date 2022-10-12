@@ -1,8 +1,33 @@
+body {
+  background-image: url("food3.0.jpeg");
+  
+ }
 #cat{
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
   padding: 24px;
   gap: 24px;
+}
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ 
+
+}
+.modal-content {
+  background-color: #cccccc;
+  margin: 15% auto; /* 15% from the top and centered */
+  
+  
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 #list{
   display: grid;
@@ -14,12 +39,14 @@
 .img-with-text:hover{
    /* background: rgba(0, 0, 0, 0.2);*/
    box-shadow: 0 0 7px rgba(0, 0, 0, 0.50);
+   
     
 }
 .img-with-text {
     text-align: justify;
     width: 200;
   text-align: center;
+  background-color: #fefefe;
   
 }
 .pic{

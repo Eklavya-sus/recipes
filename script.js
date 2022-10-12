@@ -1,5 +1,6 @@
 let dele = 0;
 let fatui = 0;
+let foodid = 0;
 fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
   .then((res) => {
     const catgry = res.json();
@@ -54,10 +55,9 @@ function addEventListnerInCategoryButtons() {
           .then((data) => {
             const ulElement = document.getElementById("list");
             for (let i = 0; i < data.meals.length; i++) {
+              let x = i+1;
               
-            
-      
-              // ELEMENT CREATION
+
         
               // create Li element <li>
               let liElement = document.createElement("li");
@@ -90,8 +90,68 @@ function addEventListnerInCategoryButtons() {
               // li will be child of ul
               ulElement.appendChild(liElement);
               console.log("fatui is",fatui);
+              //modal elements
+
+              liElement.addEventListener("click", function (event) {
+                console.log("Button is clicked!");
+                let fdas = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal
+                fetch(fdas)
+                .then((res) => {
+                const cool = res.json();
+                return cool;
+                               })
+                .then((cool) => {
+                  
+                  // get modal
+                  var modal = document.getElementById("myModal");
+                   // creating list
+                  let igElement = document.createElement("li");
+
+                  const ingElement = document.createElement("li");
+                  const insElement = document.createElement("p");
+                  const measElement = document.createElement("li");
+
+                  igElement.classList.add("modal-content");
+
+
+                  for (let i = 0; i <= 20; i++) {
+                    const key = "strIngredient" + (i +1);
+                    const wee =  "strMeasure" + (i +1);
+                    ingElement.innerText = cool.meals[0].key;
+                    measElement.innerText = cool.meals[0].wee;
+                    if ( i >0){
+                      modal.style.display = "block";
+                    }
+                    
+
+                  }
+                
+                  measElement.innerText = cool.meals[0].strInstructions;
+     
+                  const closeElement = document.createElement("button");
+                  closeElement.innerText = "close";
+
+                  
+                  closeElement.onclick = function() {
+                    modal.style.display = "none";
+                    modal.removeChild(modal.firstElementChild);
+                  }
+                  
+                 
+                  igElement.appendChild(insElement);
+                  igElement.appendChild(ingElement);
+                  igElement.appendChild(measElement);
+                  igElement.appendChild(closeElement);
+                  modal.appendChild(igElement);
+
+                  
+                
+                  
+                })
+
+              });
              
-    
+            
             
               
             }
@@ -112,3 +172,38 @@ function addEventListnerInCategoryButtons() {
     });
   }
 }
+/*
+document.getElementsByClassName("img-with-text").addEventListener("click", function () {
+  let fdas = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal
+  fetch(fdas)
+  .then((res) => {
+    const cool = res.json();
+    return cool;
+  })
+  .then((cool) => {
+    let igElement = document.createElement("li");
+
+    const ingElement = document.createElement("p");
+    ingElement.innerText = cool.meals[0].strIngredient[i];
+
+    const insElement = document.createElement("p");
+    insElement.innerText = cool.meals[0].strInstructions;
+
+    const measElement = document.createElement("p");
+    measElement.innerText = cool.meals[0].strMeasure[i];
+     
+    const closeElement = document.createElement("button");
+    closeElement.innerText = "close";
+
+    igElement.classList.add("hox");
+
+    igElement.appendChild(ingElement);
+    igElement.appendChild(insElement);
+    igElement.appendChild(measElement);
+    igElement.appendChild(closeElement);
+
+
+
+  })
+});*/
+  
